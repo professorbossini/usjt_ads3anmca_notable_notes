@@ -21,4 +21,8 @@ export class HomePage {
     });
   }
 
+  onAddClick (){
+    this.navCtrl.push ('DetailPage');
+  }
+
 }
