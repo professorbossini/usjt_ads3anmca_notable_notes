@@ -55,10 +55,14 @@ export class DetailPage {
   }
 
   ionViewDidLoad() {
-    if (this.newNoteFlag){
-      if (this.note.title != "" && this.note.content != "" && this.note.date != ""){
+         
+  }
+
+  ionViewWillLeave(){
+    if (this.newNoteFlag) {
+      if (this.note.title != "" && this.note.content != "" && this.note.date != "") {
         this.noteService.addNote(this.note);
       }
-    }     
+    }
   }
 }

@@ -1,5 +1,12 @@
+import { AngularFireDatabase } from "angularfire2/database";
+import { Injectable } from "@angular/core";
 
+@Injectable()
 export class NoteService{
+
+    constructor (private db: AngularFireDatabase){
+
+    }
     notes = [
         {
             id: '1',
@@ -29,6 +36,15 @@ export class NoteService{
     }
 
     addNote (note){
-        this.notes.push(note);
+        //this.notes.push(note);
+        this.db.list("/notes/").push({
+            title: note.title,
+            content: note.content,
+            date: note.date
+        });
+    }
+
+    fetchNotes (){
+        return this.db.list("/notes/");
     }
 }
